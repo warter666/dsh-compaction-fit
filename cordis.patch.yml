@@ -1,0 +1,24 @@
+# dsh bundle patch — inserts this plugin into a profile's layer stack.
+# On install (`dsh plugin add` or the plugin market) this file is applied as a
+# bundle layer; users do not need to edit their own cordis.patch.yml.
+#
+# The config below is the neutral default. Per-gateway `budgets` are deliberately
+# left out: they depend on what the gateway actually accepts, not on what its
+# adapter declares. See README "Configuration" for when to pin one.
+- insert:
+    - id: compaction-fit
+      name: 'dsh-compaction-fit'
+      config:
+        trim: true
+        suppressFabricatedOverflow: true
+        suppressScope: all
+        retryOnPromptTooLong: true
+        maxRetries: 2
+        shrinkRatio: 0.5
+        contextRatio: 0.9
+        safetyTokens: 8192
+        minBudgetTokens: 16000
+        maxBudgetTokens: 1000000
+        keepHeadGroups: 2
+        # budgets:
+        #   "your-provider/your-model": 650000

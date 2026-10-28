@@ -1,0 +1,60 @@
+{
+  "name": "dsh-compaction-fit",
+  "version": "0.1.0",
+  "description": "Make DSH compaction summaries fit real gateway limits: CJK-aware prompt trimming, shrink-and-retry on prompt-too-long, and repair of pi-ai silent-overflow false positives.",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "compaction",
+    "context-window",
+    "token-budget",
+    "openai-compatible",
+    "gateway",
+    "llm-middleware"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/warter666/dsh-compaction-fit.git"
+  },
+  "homepage": "https://github.com/warter666/dsh-compaction-fit#readme",
+  "bugs": {
+    "url": "https://github.com/warter666/dsh-compaction-fit/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "node --test test/guard.test.mjs"
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "compatibility": {
+      "dshReleases": {
+        "0.2.1-rc.2": "compatible"
+      }
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.0.5"
+  }
+}
